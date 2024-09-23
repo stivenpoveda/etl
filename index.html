@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">panel principal</h1>
+        
+        <form method="post">
+            <div class="form-group">
+                <label for="question">Ask a question:</label>
+                <input type="text" class="form-control" id="question" name="question" placeholder="What do you want to know?">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div class="my-4">
+            {% if answer %}
+                <h2>Answer:</h2>
+                <div>{{ answer|safe }}</div>
+            {% endif %}
+        </div>
+
+        <div class="my-4">
+            <h2>Graphs:</h2>
+            {% if plot_img_pie %}
+                <h3>Pie Chart</h3>
+                <img src="data:image/png;base64,{{ plot_img_pie }}" alt="Pie Chart">
+            {% endif %}
+            {% if plot_img_bar %}
+                <h3>Bar Chart</h3>
+                <img src="data:image/png;base64,{{ plot_img_bar }}" alt="Bar Chart">
+            {% endif %}
+            {% if plot_img_scatter %}
+                <h3>Scatter Plot</h3>
+                <img src="data:image/png;base64,{{ plot_img_scatter }}" alt="Scatter Plot">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
